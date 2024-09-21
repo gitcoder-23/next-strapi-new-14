@@ -1,6 +1,22 @@
-import React from "react";
+"use client"; // Add this at the top of the file
+
+import React, { useEffect, useState } from "react";
+import { gql, useQuery } from "@apollo/client";
+import client from "../../apollo-client";
+import { GET_HOME_PAGE } from "../../queries/homePageQuery";
 
 const Header = () => {
+  useEffect(() => {
+    if (data != undefined) {
+      console.log("data=> ", data);
+    }
+  }, []);
+
+  const { loading, error, data } = useQuery(GET_HOME_PAGE, { client });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <header className="top-area">
       <div className="header-area">
@@ -16,7 +32,7 @@ const Header = () => {
                 <i className="fa fa-bars"></i>
               </button>
               <a className="navbar-brand" href="index.html">
-                browny
+                {data?.homePage?.title}
               </a>
             </div>
 
