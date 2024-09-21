@@ -12,3 +12,34 @@ export const GET_HOME_PAGE = gql`
     }
   }
 `;
+
+export const GET_HOME_PAGE_BANNER = gql`
+  query {
+    homePage {
+      bannerBlock {
+        ... on ComponentLayoutHeroBanner {
+          bannerImage {
+            url
+            name
+          }
+          downloadLink {
+            resume {
+              url
+            }
+            text
+            isExternal
+            id
+            url
+          }
+          heading
+          subHeading
+          id
+        }
+      }
+      documentId
+      description
+      createdAt
+      title
+    }
+  }
+`;

@@ -6,12 +6,6 @@ import client from "../../apollo-client";
 import { GET_HOME_PAGE } from "../../queries/homePageQuery";
 
 const Header = () => {
-  useEffect(() => {
-    if (data != undefined) {
-      console.log("data=> ", data);
-    }
-  }, []);
-
   const { loading, error, data } = useQuery(GET_HOME_PAGE, { client });
 
   if (loading) return <p>Loading...</p>;
